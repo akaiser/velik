@@ -1,4 +1,4 @@
-# velik
+# Velik
 
 A fun virtual cycling playground, early-alpha with bad graphics, questionable physics and lots of room to grow. WIP
 
