@@ -1,5 +1,5 @@
 name: velik
-description: ""
+description: "A fun virtual cycling playground, early-alpha with bad graphics and questionable physics. WIP"
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
