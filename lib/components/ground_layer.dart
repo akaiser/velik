@@ -1,8 +1,6 @@
 import 'dart:ui';
 
 import 'package:flame/components.dart';
-import 'package:flame/effects.dart';
-import 'package:flutter/animation.dart';
 import 'package:velik/_constants.dart';
 
 class GroundLayer extends RectangleComponent {
@@ -22,30 +20,16 @@ class GroundLayer extends RectangleComponent {
     }
   }
 
-  void uphill() {
-    prepareForAngle(-groundAngleStep);
-    add(
-      RotateEffect.by(
-        -groundAngleStep,
-        EffectController(duration: 0.3, curve: Curves.easeOut),
-      ),
-    );
-  }
+  void uphill() => setAngle(-groundAngleStep);
 
-  void downhill() {
-    prepareForAngle(groundAngleStep);
-    add(
-      RotateEffect.by(
-        groundAngleStep,
-        EffectController(duration: 0.3, curve: Curves.easeOut),
-      ),
-    );
-  }
+  void downhill() => setAngle(groundAngleStep);
 }
 
-extension on GroundLayer {
-  void prepareForAngle(double deltaAngle) {
-    if (angle + deltaAngle > 0) {
+extension on RectangleComponent {
+  void setAngle(double step) {
+    angle = (angle + step).maybeZero();
+
+    if (angle > 0) {
       this
         .._setX(size.x / 2)
         .._setAnchor(Anchor.topRight);
@@ -67,4 +51,8 @@ extension on GroundLayer {
       this.anchor = anchor;
     }
   }
+}
+
+extension on double {
+  double maybeZero({double epsilon = 1e-10}) => abs() < epsilon ? 0.0 : this;
 }
