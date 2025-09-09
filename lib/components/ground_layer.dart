@@ -30,13 +30,11 @@ extension on RectangleComponent {
     angle = (angle + step).maybeZero();
 
     if (angle > 0) {
-      this
-        .._setX(size.x / 2)
-        .._setAnchor(Anchor.topRight);
+      _setX(size.x / 2);
+      _setAnchor(Anchor.topRight);
     } else {
-      this
-        .._setX(0)
-        .._setAnchor(Anchor.topLeft);
+      _setX(0);
+      _setAnchor(Anchor.topLeft);
     }
   }
 
