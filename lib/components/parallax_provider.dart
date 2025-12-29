@@ -11,6 +11,7 @@ class ParallaxProvider {
   Future<ParallaxComponent> load() async =>
       _parallax = await ParallaxComponent.load(
         parallaxDataList,
+        //baseVelocity: Vector2(0, -5),
         baseVelocity: Vector2(0, 0),
         velocityMultiplierDelta: Vector2(1.5, 1),
         filterQuality: FilterQuality.none,

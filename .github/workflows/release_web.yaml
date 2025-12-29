@@ -7,7 +7,7 @@ on:
 
 jobs:
   release-web:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
       - uses: actions/checkout@v5
       - uses: ./.github/actions/setup-flutter

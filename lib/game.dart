@@ -1,4 +1,5 @@
 import 'package:flame/game.dart';
+import 'package:flutter/material.dart';
 import 'package:velik/components/ground_layer.dart';
 import 'package:velik/components/parallax_provider.dart';
 
@@ -15,6 +16,15 @@ class Game extends FlameGame {
   void downhill() => _groundLayer.downhill();
 
   @override
+  Color backgroundColor() => const Color(0xFFAB6A8B);
+
+  @override
+  Future<void> onLoad() async {
+    add(await _parallaxProvider.load());
+    add(_groundLayer..adopt(size));
+  }
+
+  @override
   void onGameResize(Vector2 size) {
     super.onGameResize(size);
 
@@ -22,11 +32,5 @@ class Game extends FlameGame {
       _parallaxProvider.adopt(size);
       _groundLayer.adopt(size);
     }
-  }
-
-  @override
-  Future<void> onLoad() async {
-    add(await _parallaxProvider.load());
-    add(_groundLayer..adopt(size));
   }
 }
