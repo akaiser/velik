@@ -24,7 +24,6 @@ class ParallaxProvider {
 
   void slower() => _setBaseVelocityX(-parallaxVelocityXStep);
 
-  void _setBaseVelocityX(double step) {
-    _parallax.parallax?.baseVelocity.x = _parallaxVelocityX += step;
-  }
+  void _setBaseVelocityX(double step) =>
+      _parallax.parallax?.baseVelocity.x = _parallaxVelocityX += step;
 }

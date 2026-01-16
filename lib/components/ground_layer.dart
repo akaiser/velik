@@ -7,7 +7,7 @@ class GroundLayer extends RectangleComponent {
   GroundLayer()
     : super(
         anchor: Anchor.topLeft,
-        paint: Paint()..color = const Color(0xFF6D4C41),
+        paint: Paint()..color = groundColor,
       );
 
   void adopt(Vector2 gameSize) {
@@ -27,14 +27,20 @@ class GroundLayer extends RectangleComponent {
 
 extension on RectangleComponent {
   void setAngle(double step) {
-    angle = (angle + step).maybeZero();
+    final newAngle = (angle + step)
+        .clamp(-maxGroundAngle, maxGroundAngle)
+        .maybeZero();
 
-    if (angle > 0) {
-      _setX(size.x / 2);
-      _setAnchor(Anchor.topRight);
-    } else {
-      _setX(0);
-      _setAnchor(Anchor.topLeft);
+    if (newAngle != angle) {
+      angle = newAngle;
+
+      if (angle > 0) {
+        _setX(size.x / 2);
+        _setAnchor(Anchor.topRight);
+      } else {
+        _setX(0);
+        _setAnchor(Anchor.topLeft);
+      }
     }
   }
 

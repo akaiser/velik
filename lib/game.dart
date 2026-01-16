@@ -1,5 +1,6 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
+import 'package:velik/_constants.dart';
 import 'package:velik/components/ground_layer.dart';
 import 'package:velik/components/parallax_provider.dart';
 
@@ -16,7 +17,7 @@ class Game extends FlameGame {
   void downhill() => _groundLayer.downhill();
 
   @override
-  Color backgroundColor() => const Color(0xFFAB6A8B);
+  Color backgroundColor() => gameBackgroundColor;
 
   @override
   Future<void> onLoad() async {

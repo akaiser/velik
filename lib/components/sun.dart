@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:velik/_constants.dart';
 import 'package:velik/util/build_context_ext.dart';
-
-const _sunSize = 60.0;
 
 class Sun extends StatefulWidget {
   const Sun({super.key});
@@ -11,20 +10,15 @@ class Sun extends StatefulWidget {
 }
 
 class _SunState extends State<Sun> {
-  late Size _screenSize = context.screenSize;
-
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    _screenSize = context.screenSize;
+  Widget build(BuildContext context) {
+    final screenSize = context.screenSize;
+    return Positioned(
+      top: screenSize.height / 3,
+      left: screenSize.width / 2 - sunSize / 2,
+      child: const _Sun(),
+    );
   }
-
-  @override
-  Widget build(BuildContext context) => Positioned(
-    top: _screenSize.height / 3,
-    left: _screenSize.width / 2 - _sunSize / 2,
-    child: const _Sun(),
-  );
 }
 
 class _Sun extends StatelessWidget {
@@ -32,15 +26,15 @@ class _Sun extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => SizedBox(
-    width: _sunSize,
-    height: _sunSize,
+    width: sunSize,
+    height: sunSize,
     child: DecoratedBox(
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: const Color(0xFFFFF59D),
+        color: sunColor,
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFFFFEB3B).withValues(alpha: 0.8),
+            color: sunShadowColor.withValues(alpha: 0.8),
             blurRadius: 50,
             spreadRadius: 10,
           ),
