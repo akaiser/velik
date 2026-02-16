@@ -10,7 +10,7 @@ jobs:
   analyze:
     runs-on: ubuntu-slim
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: ./.github/actions/setup-flutter
       - run: flutter analyze
       - run: dart format -o none --set-exit-if-changed .
@@ -19,6 +19,6 @@ jobs:
     needs: analyze
     runs-on: ubuntu-slim
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: ./.github/actions/setup-flutter
       - run: flutter test
